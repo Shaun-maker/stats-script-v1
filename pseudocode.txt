@@ -8,8 +8,11 @@ Ce que doit faire le script :
 
 Au lancement du script 1, copier tout les contenus des stats processx dans une variable, puis dans un fichier ?
 https://www.abeille-royale-traiteur.com/stats/
+https://www.abeille-royale-traiteur.com/stats/usage_202203.html 
 abeille
 processx
 
-Problème 1 : Comment passer le résultat du content script dans le background script, pour que le background script
-change de page et execute le content script à nouveau ?
+TODO :
+Après avoir incrémentée l'url, updater l'url courante plutôt que de l'ouvrir dans un nouvel onglet (si possible);
+
+-> Regarder à nouveau comment ne pas executer deux fois le script (beastify)
