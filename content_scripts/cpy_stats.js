@@ -9,7 +9,10 @@ lines.splice(0,4);
 var newText = lines.join('\n');
 console.log(newText);
 
-navigator.clipboard.writeText(newText)
-.then(function(value) {
-    console.log(value);
-})
+navigator.clipboard.writeText(newText);
+
+/* const sendStats = browser.runtime.sendMessage({
+    stats: newText,
+}); */
+
+const sendStats = browser.runtime.sendMessage(newText);

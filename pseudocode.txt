@@ -10,3 +10,6 @@ Au lancement du script 1, copier tout les contenus des stats processx dans une v
 https://www.abeille-royale-traiteur.com/stats/
 abeille
 processx
+
+Problème 1 : Comment passer le résultat du content script dans le background script, pour que le background script
+change de page et execute le content script à nouveau ?
