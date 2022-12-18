@@ -1,6 +1,6 @@
-const allTable = document.getElementsByTagName('table');
+var allTable = document.getElementsByTagName('table');
 
-const statsTable = allTable[1];
+var statsTable = allTable[1];
 var innerText = statsTable.innerText;
 
 var lines = innerText.split('\n');
@@ -10,4 +10,4 @@ var newText = lines.join('\n');
 
 navigator.clipboard.writeText(newText);
 
-const sendStats = browser.runtime.sendMessage(newText);
+var sendStats = browser.runtime.sendMessage(newText);
