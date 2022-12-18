@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Manipulate DOM",
+    "version": "1.0",
+
+    "description": "A plugin test to manipulate DOM and copy content of html page",
+
+    "permissions": [
+        "activeTab",
+        "clipboardWrite",
+        "clipboardRead"
+    ],
+
+    "browser_action": {
+        "default_icon": "icons/list-simple-7.png",
+        "default_title": "Script test",
+        "default_popup": "popup/choose_script.html"
+    }
+}

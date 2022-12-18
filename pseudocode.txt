@@ -1,0 +1,12 @@
+Ce que doit faire le script :
+
+- Quand on clique sur le bouton "Script 1" :
+    - Prendre le contenu html de cette page
+    - Le stocker dans une variable, puis dans un fichier externe.
+
+
+
+Au lancement du script 1, copier tout les contenus des stats processx dans une variable, puis dans un fichier ?
+https://www.abeille-royale-traiteur.com/stats/
+abeille
+processx
