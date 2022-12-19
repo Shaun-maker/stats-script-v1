@@ -17,3 +17,7 @@ Après avoir incrémentée l'url, updater l'url courante plutôt que de l'ouvrir
 
 -> Regarder à nouveau comment ne pas executer deux fois le script (beastify)
 
+Problème :
+Récupérer l'url de la page active, les Promises sont utilisés.
+Un then au sein de la fonction fonctionne pour récupérér les données de l'url.
+Mais en dehors de la fonction, impossible de récupérer les données de cette url ?

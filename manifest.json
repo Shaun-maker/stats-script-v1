@@ -8,7 +8,9 @@
     "permissions": [
         "activeTab",
         "clipboardWrite",
-        "clipboardRead"
+        "clipboardRead",
+        "tabs",
+        "<all_urls>"
     ],
 
     "browser_action": {

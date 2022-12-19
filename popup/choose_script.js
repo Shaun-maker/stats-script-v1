@@ -1,7 +1,10 @@
-var all_stats = [];
+var all_stats = "";
+var url = "";
+
+/* navigator.clipboard.writeText(stats); */
 
 function getStats(stats) {
-    all_stats.push(stats);
+    all_stats += stats;
 }
 
 function incrementUrl(url) {
@@ -15,27 +18,65 @@ function incrementUrl(url) {
     return url;
 }
 
+async function updatePage(url) {
+    let newUrl = incrementUrl(url);
+    await browser.tabs.update({url: newUrl});
+}
+
 //TODO : rename function to getPage, and make it work small function by small function
-async function upgradePage() {
+async function getPage() {
     await browser.tabs.query({currentWindow: true, active: true})
     .then(function(tabs) {
         let currentUrl = tabs[0].url;
-        let newUrl = incrementUrl(currentUrl);
-        let updating = browser.tabs.update({url: newUrl});
-        return updating;
+        url = currentUrl;
+        return url;
     })
+    .catch(function(err) {
+        console.log("Une erreur s'est produite sur la récupération de l'url de la page active");
+        console.log(err);
+    })
+}
+
+async function injectScript() {
+    await browser.tabs.executeScript({file: "/content_scripts/cpy_stats.js"});   
 }
 
 browser.runtime.onMessage.addListener(getStats);
 
 document.addEventListener('click', function(event) {
     if (event.target.id == 'script-1') {
-        browser.tabs.executeScript({file: "/content_scripts/cpy_stats.js"});
-        upgradePage()
+        injectScript();
+        getPage()
         .then(function() {
-            upgradePage();
-        })
+            updatePage(url);
+            setTimeout(function() {
+                injectScript();
+                getPage()
+                .then(function() {
+                    updatePage(url);
+                    setTimeout(function() {
+                        injectScript();
+                        getPage()
+                        .then(function() {
+                            updatePage(url);
+                            setTimeout(function() {
+                                injectScript();
+                                getPage()
+                                .then(function() {
+                                    updatePage(url);
+                                    setTimeout(function() {
+                                        injectScript();
+                                    }, 1500);
+                                })
+                            }, 1500);
+                        })
+                    }, 1500);
+                });
+            }, 1500);
+        });
     }
 });
 
-
+setTimeout(function() {
+    navigator.clipboard.writeText(all_stats);
+}, 7000);

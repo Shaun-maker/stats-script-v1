@@ -7,7 +7,6 @@ var lines = innerText.split('\n');
 lines.splice(0,4);
 
 var newText = lines.join('\n');
-
-navigator.clipboard.writeText(newText);
+newText = newText.trimEnd();
 
 var sendStats = browser.runtime.sendMessage(newText);
